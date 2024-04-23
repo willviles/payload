@@ -13,6 +13,7 @@ export type FieldTypes = {
   number: React.ComponentType<any>
   password: React.ComponentType<any>
   point: React.ComponentType<any>
+  geometry: React.ComponentType<any>
   radio: React.ComponentType<any>
   relationship: React.ComponentType<any>
   richText: React.ComponentType<any>

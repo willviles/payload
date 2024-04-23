@@ -106,6 +106,10 @@ const fieldTypeConditions = {
     component: 'Point',
     operators: [...geo, within, intersects],
   },
+  geometry: {
+    component: 'Geometry',
+    operators: [...geo, within],
+  },
   radio: {
     component: 'Select',
     operators: [...base],

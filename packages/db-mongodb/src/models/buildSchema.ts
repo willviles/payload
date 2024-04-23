@@ -14,6 +14,7 @@ import type {
   EmailField,
   Field,
   FieldAffectingData,
+  GeometryField,
   GroupField,
   JSONField,
   NonPresentationalField,
@@ -267,6 +268,45 @@ const fieldToSchemaMap: Record<string, FieldSchemaGenerator> = {
     schema.add({
       [field.name]: localizeSchema(field, baseSchema, config.localization),
     })
+  },
+  geometry: (
+    field: GeometryField,
+    schema: Schema,
+    config: SanitizedConfig,
+    buildSchemaOptions: BuildSchemaOptions,
+  ): void => {
+    // TODO: feat/geometry
+    // const baseSchema: SchemaTypeOptions<unknown> = {
+    //   type: {
+    //     type: String,
+    //     enum: ['Point'],
+    //   },
+    //   coordinates: {
+    //     type: [Number],
+    //     default: field.defaultValue || undefined,
+    //     required: false,
+    //   },
+    // }
+    // if (buildSchemaOptions.disableUnique && field.unique && field.localized) {
+    //   baseSchema.coordinates.sparse = true
+    // }
+    // schema.add({
+    //   [field.name]: localizeSchema(field, baseSchema, config.localization),
+    // })
+    // if (field.index === true || field.index === undefined) {
+    //   const indexOptions: IndexOptions = {}
+    //   if (!buildSchemaOptions.disableUnique && field.unique) {
+    //     indexOptions.sparse = true
+    //     indexOptions.unique = true
+    //   }
+    //   if (field.localized && config.localization) {
+    //     config.localization.locales.forEach((locale) => {
+    //       schema.index({ [`${field.name}.${locale.code}`]: '2dsphere' }, indexOptions)
+    //     })
+    //   } else {
+    //     schema.index({ [field.name]: '2dsphere' }, indexOptions)
+    //   }
+    // }
   },
   group: (
     field: GroupField,

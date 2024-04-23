@@ -8,6 +8,7 @@ import { Collapsible as collapsible } from './Collapsible/index.js'
 import { ConfirmPassword as confirmPassword } from './ConfirmPassword/index.js'
 import { DateTime as date } from './DateTime/index.js'
 import { Email as email } from './Email/index.js'
+import { Geometry as geometry } from './Geometry/index.js'
 import { Group as group } from './Group/index.js'
 import { HiddenInput as hidden } from './HiddenInput/index.js'
 import { JSONField as json } from './JSON/index.js'
@@ -36,6 +37,7 @@ export const fieldComponents: FieldTypes = {
   confirmPassword,
   date,
   email,
+  geometry,
   group,
   hidden,
   json,

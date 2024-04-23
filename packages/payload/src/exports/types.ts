@@ -76,6 +76,7 @@ export type {
   FieldWithSubFields,
   FilterOptions,
   FilterOptionsProps,
+  GeometryField,
   GroupField,
   HookName,
   JSONField,

@@ -379,6 +379,26 @@ export const point = baseField.keys({
   defaultValue: joi.alternatives().try(joi.array().items(joi.number()).max(2).min(2), joi.func()),
 })
 
+export const geometry = baseField.keys({
+  name: joi.string().required(),
+  type: joi.string().valid('geometry').required(),
+  admin: baseAdminFields.keys({
+    components: baseAdminComponentFields.keys({
+      Error: componentSchema,
+      Label: componentSchema,
+      afterInput: joi.array().items(componentSchema),
+      beforeInput: joi.array().items(componentSchema),
+    }),
+    map: joi.object({
+      defaultLatLng: joi.array().items(joi.number()).max(2).min(2),
+      defaultZoom: joi.number(),
+    }),
+  }),
+  defaultValue: joi.alternatives().try(joi.object(), joi.func()),
+  geojsonTypes: joi.array().items(joi.string()),
+  srid: joi.string(),
+})
+
 export const relationship = baseField.keys({
   name: joi.string().required(),
   type: joi.string().valid('relationship').required(),
@@ -552,6 +572,7 @@ const fieldSchema = joi
     blocks,
     date,
     point,
+    geometry,
     ui,
   )
   .id('field')

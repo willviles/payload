@@ -1,0 +1,15 @@
+@import '../../scss/styles.scss';
+
+.geometry {
+  &__map {
+    height: 400px;
+  }
+}
+
+html[data-theme='light'] {
+  // TODO: This
+}
+
+html[data-theme='dark'] {
+  // TODO: This
+}

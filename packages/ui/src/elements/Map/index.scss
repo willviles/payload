@@ -1,0 +1,9 @@
+@import '../../scss/styles';
+@import 'maplibre-gl/dist/maplibre-gl.css';
+
+.map {
+  .maplibregl-map {
+    height: 100%;
+    width: 100%;
+  }
+}

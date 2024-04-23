@@ -10,6 +10,7 @@ import type {
   DateField,
   EmailField,
   Field,
+  GeometryField,
   GroupField,
   JSONField,
   NumberField,
@@ -82,6 +83,7 @@ type FieldType =
   | 'json'
   | 'number'
   | 'point'
+  | 'geometry'
   | 'radio'
   | 'relationship'
   | 'richText'
@@ -107,6 +109,7 @@ export type FieldToSchemaMap<TSchema> = {
   collapsible: FieldGeneratorFunction<TSchema, CollapsibleField>
   date: FieldGeneratorFunction<TSchema, DateField>
   email: FieldGeneratorFunction<TSchema, EmailField>
+  geometry: FieldGeneratorFunction<TSchema, GeometryField>
   group: FieldGeneratorFunction<TSchema, GroupField>
   json: FieldGeneratorFunction<TSchema, JSONField>
   number: FieldGeneratorFunction<TSchema, NumberField>

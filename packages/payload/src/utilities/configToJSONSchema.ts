@@ -263,6 +263,13 @@ export function fieldsToJSONSchema(
             break
           }
 
+          case 'geometry': {
+            fieldSchema = {
+              type: withNullableJSONSchemaType('object', isRequired),
+            }
+            break
+          }
+
           case 'relationship': {
             if (Array.isArray(field.relationTo)) {
               if (field.hasMany) {

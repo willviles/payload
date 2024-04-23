@@ -26,6 +26,7 @@ type staticTypes =
   | 'json'
   | 'number'
   | 'point'
+  | 'geometry'
   | 'relationship'
   | 'richText'
   | 'text'
@@ -112,6 +113,35 @@ const defaults: DefaultsType = {
     ],
   },
   point: {
+    operators: [
+      ...[...operators.equality, ...operators.comparison, ...operators.geo].map((operator) => ({
+        name: operator,
+        type: new GraphQLList(GraphQLFloat),
+      })),
+      ...operators.geojson.map((operator) => ({
+        name: operator,
+        /**
+         * @example:
+         * within: {
+         *  type: "Polygon",
+         *  coordinates: [[
+         *   [0.0, 0.0],
+         *   [1.0, 1.0],
+         *   [1.0, 0.0],
+         *   [0.0, 0.0],
+         *  ]],
+         * }
+         * @example
+         * intersects: {
+         *  type: "Point",
+         *  coordinates: [ 0.5, 0.5 ]
+         * }
+         */
+        type: GeoJSONObject,
+      })),
+    ],
+  },
+  geometry: {
     operators: [
       ...[...operators.equality, ...operators.comparison, ...operators.geo].map((operator) => ({
         name: operator,

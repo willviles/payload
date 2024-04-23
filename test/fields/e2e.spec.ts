@@ -481,6 +481,8 @@ describe('fields', () => {
     })
   })
 
+  // TODO: feat/geometry - add tests
+
   describe('collapsible', () => {
     let url: AdminUrlUtil
     beforeAll(() => {

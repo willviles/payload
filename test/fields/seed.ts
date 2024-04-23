@@ -12,6 +12,7 @@ import { codeDoc } from './collections/Code/shared.js'
 import { collapsibleDoc } from './collections/Collapsible/shared.js'
 import { conditionalLogicDoc } from './collections/ConditionalLogic/shared.js'
 import { dateDoc } from './collections/Date/shared.js'
+import { geometryDoc } from './collections/Geometry/shared.js'
 import { groupDoc } from './collections/Group/shared.js'
 import { jsonDoc } from './collections/JSON/shared.js'
 import { lexicalDocData } from './collections/Lexical/data.js'
@@ -32,6 +33,7 @@ import {
   collectionSlugs,
   conditionalLogicSlug,
   dateFieldsSlug,
+  geometryFieldsSlug,
   groupFieldsSlug,
   jsonFieldsSlug,
   lexicalFieldsSlug,
@@ -236,6 +238,13 @@ export const seed = async (_payload) => {
   await _payload.create({
     collection: pointFieldsSlug,
     data: pointDoc,
+    depth: 0,
+    overrideAccess: true,
+  })
+
+  await _payload.create({
+    collection: geometryFieldsSlug,
+    data: geometryDoc,
     depth: 0,
     overrideAccess: true,
   })

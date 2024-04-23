@@ -683,6 +683,20 @@ export type BlockField = FieldBase & {
 
 export type PointField = FieldBase & {
   type: 'point'
+  srid?: string
+}
+
+export type GeometryField = FieldBase & {
+  type: 'geometry'
+  geojsonTypes?: (
+    | 'Point'
+    | 'LineString'
+    | 'Polygon'
+    | 'MultiPoint'
+    | 'MultiLineString'
+    | 'MultiPolygon'
+  )[]
+  srid?: string
 }
 
 export type Field =
@@ -697,6 +711,7 @@ export type Field =
   | JSONField
   | NumberField
   | PointField
+  | GeometryField
   | RadioField
   | RelationshipField
   | RichTextField
@@ -723,6 +738,7 @@ export type FieldAffectingData =
   | JSONField
   | NumberField
   | PointField
+  | GeometryField
   | RadioField
   | RelationshipField
   | RichTextField
@@ -744,6 +760,7 @@ export type NonPresentationalField =
   | JSONField
   | NumberField
   | PointField
+  | GeometryField
   | RadioField
   | RelationshipField
   | RichTextField

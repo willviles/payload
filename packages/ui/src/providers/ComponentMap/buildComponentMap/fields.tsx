@@ -55,6 +55,7 @@ import type {
 } from './types.js'
 
 import { HiddenInput } from '../../../fields/HiddenInput/index.js'
+import { GeometryFieldProps } from '../../../fields/Geometry/index.jsx'
 
 export const mapFields = (args: {
   WithServerSideProps: WithServerSidePropsType
@@ -515,6 +516,22 @@ export const mapFields = (args: {
             }
 
             fieldComponentProps = pointField
+            break
+          }
+          case 'geometry': {
+            const geometryField: GeometryFieldProps = {
+              ...baseFieldProps,
+              name: field.name,
+              className: field.admin?.className,
+              disabled: field.admin?.disabled,
+              label: field.label,
+              readOnly: field.admin?.readOnly,
+              required: field.required,
+              style: field.admin?.style,
+              width: field.admin?.width,
+            }
+
+            fieldComponentProps = geometryField
             break
           }
           case 'relationship': {

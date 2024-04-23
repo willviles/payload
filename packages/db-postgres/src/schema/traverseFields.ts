@@ -31,6 +31,7 @@ import { getTableName } from './getTableName.js'
 import { idToUUID } from './idToUUID.js'
 import { parentIDColumnMap } from './parentIDColumnMap.js'
 import { validateExistingBlockIsIdentical } from './validateExistingBlockIsIdentical.js'
+import { geometry, point } from './geometry.js'
 
 type Args = {
   adapter: PostgresAdapter
@@ -127,7 +128,9 @@ export const traverseFields = ({
 
       if (
         (field.unique || field.index) &&
-        !['array', 'blocks', 'group', 'point', 'relationship', 'upload'].includes(field.type) &&
+        !['array', 'blocks', 'group', 'point', 'geometry', 'relationship', 'upload'].includes(
+          field.type,
+        ) &&
         !('hasMany' in field && field.hasMany === true)
       ) {
         const unique = disableUnique !== true && field.unique
@@ -216,6 +219,12 @@ export const traverseFields = ({
       }
 
       case 'point': {
+        targetTable[fieldName] = point(columnName, { srid: field.srid })
+        break
+      }
+
+      case 'geometry': {
+        targetTable[fieldName] = geometry(columnName, { srid: field.srid })
         break
       }
 
